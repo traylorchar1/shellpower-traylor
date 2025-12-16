@@ -4,6 +4,7 @@ namespace SSCP.ShellPower {
     /// <summary>
     /// Represents a 3x3 matrix of 32bit floats.
     /// </summary>
+    /// potenial bug with inverse operations (i = 0, then j = i + 1)
     public struct Matrix3 {
         public static readonly Matrix3 Identity = new Matrix3(
             new Vector3(1, 0, 0),
@@ -91,3 +92,4 @@ namespace SSCP.ShellPower {
         }
     }
 }
+
