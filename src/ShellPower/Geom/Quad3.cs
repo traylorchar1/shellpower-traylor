@@ -20,23 +20,9 @@ namespace SSCP.ShellPower {
         public bool Overlaps(Quad3 other) {
             /* there must be a faster way */
             return
-                Contains(other.Min.X, other.Min.Y, other.Min.Z) ||
-                Contains(other.Min.X, other.Min.Y, other.Max.Z) ||
-                Contains(other.Min.X, other.Max.Y, other.Min.Z) ||
-                Contains(other.Min.X, other.Max.Y, other.Max.Z) ||
-                Contains(other.Max.X, other.Min.Y, other.Min.Z) ||
-                Contains(other.Max.X, other.Min.Y, other.Max.Z) ||
-                Contains(other.Max.X, other.Max.Y, other.Min.Z) ||
-                Contains(other.Max.X, other.Max.Y, other.Max.Z) ||
-
-                other.Contains(Min.X, Min.Y, Min.Z) ||
-                other.Contains(Min.X, Min.Y, Max.Z) ||
-                other.Contains(Min.X, Max.Y, Min.Z) ||
-                other.Contains(Min.X, Max.Y, Max.Z) ||
-                other.Contains(Max.X, Min.Y, Min.Z) ||
-                other.Contains(Max.X, Min.Y, Max.Z) ||
-                other.Contains(Max.X, Max.Y, Min.Z) ||
-                other.Contains(Max.X, Max.Y, Max.Z);
+                Min.X < other.Max.X && Max.X > other.Min.X &&
+            Min.Y < other.Max.Y && Max.Y > other.Min.Y &&
+            Min.Z < other.Max.Z && Max.Z > other.Min.Z;
         }
 
         public static readonly Quad3 Infinite = new Quad3() {
@@ -53,3 +39,4 @@ namespace SSCP.ShellPower {
         }
     }
 }
+
